@@ -18,6 +18,7 @@ class MainWindow(QMainWindow):
                                 ALTER DATABASE NewsCollection
                                 CHARACTER SET utf8mb4
                                 COLLATE utf8mb4_unicode_ci;
+                                SET FOREIGN_KEY_CHECKS=0;
                                 LOAD DATA LOCAL INFILE 'C:/Users/nguye/Data.csv'
                                 INTO TABLE article
                                 FIELDS TERMINATED BY ','
@@ -30,8 +31,6 @@ class MainWindow(QMainWindow):
         self.ui.data = article
         self.ui.connection = connection
         self.ui.setupUi(self)
-
-
 
         self.show()
 

@@ -203,6 +203,7 @@ class Ui_MainWindow(object):
 "	border-radius: 5px;\n"
 "	gridline-color: rgb(78, 158, 117);\n"
 "	border-bottom: 1px solid rgbrgb(78, 158, 117);\n"
+"       color: rgb(255 ,255,255);\n"
 "}\n"
 "QTableWidget::item{\n"
 "	border-color: rgb(78, 158, 117);\n"
@@ -212,6 +213,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QTableWidget::item:selected{\n"
 "	background-color: rgb(127, 255, 189);\n"
+"       color: rgb(0,0,0);\n"
 "}\n"
 "QHeaderView::section{\n"
 "	background-color: rgb(63, 126, 93);\n"
@@ -687,8 +689,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.table_data = QTableWidget(self.widget_3)
-        if (self.table_data.columnCount() < 4):
-            self.table_data.setColumnCount(4)
+        if (self.table_data.columnCount() < 5):
+            self.table_data.setColumnCount(5)
         __qtablewidgetitem = QTableWidgetItem()
         self.table_data.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -697,6 +699,8 @@ class Ui_MainWindow(object):
         self.table_data.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.table_data.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.table_data.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         if (self.table_data.rowCount() < 10):
             self.table_data.setRowCount(10)
         font5 = QFont()
@@ -708,7 +712,7 @@ class Ui_MainWindow(object):
         self.table_data.setShowGrid(True)
         self.table_data.setSortingEnabled(False)
         self.table_data.setRowCount(10)
-        self.table_data.setColumnCount(4)
+        self.table_data.setColumnCount(5)
         self.table_data.horizontalHeader().setVisible(True)
         self.table_data.horizontalHeader().setCascadingSectionResizes(True)
         self.table_data.verticalHeader().setVisible(True)
@@ -748,7 +752,7 @@ class Ui_MainWindow(object):
         #self.generate_table(self.data)
 
         #//////////////////////////////////////////////////////HÀM XỬ LÝ NÚT NHẤN/////////////////////////////////////////////////////////////
-    
+
     def generate_table(self,data):
         for i, row in enumerate(data):
             item = QTableWidgetItem(str(row["Title"]))
@@ -759,9 +763,12 @@ class Ui_MainWindow(object):
             self.table_data.setItem(i, 2, item)
             item = QTableWidgetItem(str(row["Content"]))
             self.table_data.setItem(i, 3, item)
+            item = QTableWidgetItem(str(row["Author_Name"]))
+            self.table_data.setItem(i, 4, item)
                 # hiển thị widget bảng
         
     def search_machine(self):
+        self.table_data.clearContents()
         search = self.plainTextEdit.toPlainText()
         query = "SELECT * FROM article WHERE Author_Name LIKE %s"
         cursor = self.connection.cursor()
@@ -776,7 +783,7 @@ class Ui_MainWindow(object):
         print("You are finding content relate : ",self.plainTextEdit.toPlainText())
         search = self.plainTextEdit.toPlainText()
      
-        os.environ["OPENAI_API_KEY"] = "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"
+        os.environ["OPENAI_API_KEY"] = "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"
         openai.api_key = os.getenv("OPENAI_API_KEY")
 
         response = openai.Completion.create(
@@ -865,6 +872,8 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Genre", None));
         ___qtablewidgetitem3 = self.table_data.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Content", None));
+        ___qtablewidgetitem4 = self.table_data.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Author", None));
 
         __sortingEnabled = self.table_data.isSortingEnabled()
         self.table_data.setSortingEnabled(False)
