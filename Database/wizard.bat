@@ -26,7 +26,7 @@
 ::ZQ0/vhVqMQ3MEVWAtB9wSA==
 ::Zg8zqx1/OA3MEVWAtB9wSA==
 ::dhA7pRFwIByZRRnk
-::Zh4grVQjdCyDJGyX8VAjFBVTWR2HAES0A5EO4f7+08ckY1RdQEHydofn9LGZM60w5UnocJU533VUpPwFFhpKelyudgpU
+::Zh4grVQjdCyDJGyX8VAjFBVTWR2HAES0A5EO4f7+08ckY1RdQEHydofn9LGZM60w5UnocJU533VUpO8NGBpafwGuUjg9s29QsiqAL8L8
 ::YB416Ek+ZG8=
 ::
 ::
@@ -41,5 +41,11 @@ echo   / You are running a sample data construction built for this application. 
 echo  / Our project was built in Python and the datas would be stored in MySQL /
 echo / database.                                                              /
 echo  ------------------------------------------------------------------------
-echo                Please provide the password of you localhost 
+echo    			         @@
+echo     ------------------------------------------------------------------------
+echo   / MySQL Sever is required, you need to install before using our program. /
+echo  / Furthermore, please add the path of the folder contains mysql.exe into /
+echo / Evironment Variables.                                                  /
+echo  ------------------------------------------------------------------------
+echo               Now please provide the password of you localhost :
 mysql -u root -p < DDL_Script.sql
